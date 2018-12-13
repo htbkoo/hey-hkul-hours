@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/htbkoo/hey_hkul_hours/issues"
   },
-  "homepage": "https://github.com/htbkoo/hey_hkul_hours#readme"
+  "homepage": "https://github.com/htbkoo/hey_hkul_hours#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.14",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  }
 }
