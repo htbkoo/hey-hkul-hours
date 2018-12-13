@@ -1,4 +1,4 @@
-import {fetchHtml} from "./htmlFetcher";
+import {fetchHtml} from "./HtmlFetcher";
 import expectedText from "../tests/resources/external/expectedHtmlFetchResponse";
 
 describe("htmlFetcher (external tests)", function () {
