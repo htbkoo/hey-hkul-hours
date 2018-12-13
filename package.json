@@ -1,0 +1,23 @@
+{
+  "name": "hey-hkul-hours",
+  "version": "0.1.0",
+  "description": "An app to quickly retrieve the opening hours and calendar for HKU Library ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htbkoo/hey_hkul_hours.git"
+  },
+  "keywords": [
+    "hkul",
+    "app"
+  ],
+  "author": "htbkoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/htbkoo/hey_hkul_hours/issues"
+  },
+  "homepage": "https://github.com/htbkoo/hey_hkul_hours#readme"
+}
