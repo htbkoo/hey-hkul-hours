@@ -4,9 +4,9 @@ import {Moment} from "moment";
 const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
 
 export default class UrlAppender {
-    private _prefix: string;
-    private _postfix: string;
-    private _format: string;
+    private readonly _prefix: string;
+    private readonly _postfix: string;
+    private readonly _format: string;
 
     constructor(prefix: string, postfix: string, format: string = DEFAULT_DATE_FORMAT) {
         this._prefix = prefix;
