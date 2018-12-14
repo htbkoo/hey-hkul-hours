@@ -15,7 +15,7 @@ export default class HtmlParser {
 
         function getAllRows() {
             const dom = new JSDOM(html);
-            return Array.from(dom.window.document.querySelectorAll("tr"));
+            return Array.from(dom.window.document.querySelectorAll("tr")); // reference: https://stackoverflow.com/a/25657154
         }
 
         function rowToTableCells(row) {
