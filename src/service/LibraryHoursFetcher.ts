@@ -1,46 +1,19 @@
 import {JSDOM} from "jsdom";
 
 import HtmlFetcher from "../external/HtmlFetcher";
+import HtmlParser from "./HtmlParser";
 
 export default class LibraryHoursFetcher {
     private _htmlFetcher: HtmlFetcher;
+    private _parser: HtmlParser;
 
-    constructor(htmlFetcher: HtmlFetcher) {
+    constructor(htmlFetcher: HtmlFetcher, parser: HtmlParser) {
         this._htmlFetcher = htmlFetcher;
+        this._parser = parser;
     }
 
     async retrieveHours() {
         const html = await this._htmlFetcher.fetchHtml("");
-        return this.parseHtml(html);
-    }
-
-    private parseHtml(html) {
-        return getAllRows()
-            .map(rowToTableCells)
-            .map(tableCellsToStrings)
-            .reduce((obj, {libraryName, hour}) => {
-                obj[libraryName as any] = hour;
-                return obj;
-            }, {});
-
-        function getAllRows() {
-            const dom = new JSDOM(html);
-            return Array.from(dom.window.document.querySelectorAll("tr"));
-        }
-
-        function rowToTableCells(row) {
-            return Array.from((row as any).querySelectorAll("td"))
-        }
-
-        function tableCellsToStrings(tableCells) {
-            return {
-                libraryName: cellAsString(tableCells[0]),
-                hour: cellAsString(tableCells[1]),
-            };
-
-            function cellAsString(cell: any) {
-                return cell.textContent;
-            }
-        }
+        return this._parser.parseHtml(html);
     }
 }

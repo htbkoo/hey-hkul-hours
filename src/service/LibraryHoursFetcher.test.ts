@@ -2,6 +2,7 @@ import {when} from 'jest-when';
 
 import LibraryHoursFetcher from "./LibraryHoursFetcher";
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";
+import HtmlParser from "./HtmlParser";
 
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
@@ -9,7 +10,9 @@ describe("LibraryHoursFetcher", function () {
         const mockHtmlFetcher = {fetchHtml: jest.fn()};
         when(mockHtmlFetcher.fetchHtml).calledWith("").mockReturnValue(htmlResponse);
 
-        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any);
+        const parser = new HtmlParser();
+
+        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, parser);
 
         // when
         const hours = await fetcher.retrieveHours();
