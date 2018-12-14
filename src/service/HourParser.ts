@@ -4,5 +4,5 @@ export type HourInString = {
 }
 
 export default interface HourRegexParser {
-    parse(str: string): HourInString
+    parse(str: string): HourInString[]
 }
