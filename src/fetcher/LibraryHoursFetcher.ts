@@ -1,7 +1,7 @@
 import {JSDOM} from "jsdom";
 
 import HtmlFetcher from "../external/HtmlFetcher";
-import HtmlParser from "./HtmlParser";
+import HtmlParser from "../service/HtmlParser";
 
 export default class LibraryHoursFetcher {
     private readonly _htmlFetcher: HtmlFetcher;

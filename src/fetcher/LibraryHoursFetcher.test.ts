@@ -2,7 +2,7 @@ import {when} from 'jest-when';
 
 import LibraryHoursFetcher from "./LibraryHoursFetcher";
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";
-import HtmlParser from "./HtmlParser";
+import HtmlParser from "../service/HtmlParser";
 
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
