@@ -11,6 +11,10 @@ describe("HourRegexParser", function () {
         {input: "9:00am - 8:00pm", expected: {from: "9:00am", to: "8:00pm"}},
         {input: "9:00am - 9:00pm", expected: {from: "9:00am", to: "9:00pm"}},
         {input: "9:00am - 10:00pm", expected: {from: "9:00am", to: "10:00pm"}},
+
+        {input: "8:15am- 11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
+        {input: "8:15am -11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
+        {input: "8:15am-11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
     ].forEach(({input, expected}) =>
         it(`should parse "${input}" from string into parts`, async function () {
             // given
@@ -40,9 +44,8 @@ describe("HourRegexParser", function () {
 
     [
         "unparsable string",
-        "8:15am- 11:00pm",
-        "8:15am -11:00pm",
         "8:15am - ",
+        "8:15am- ",
         "8:15am -",
         "8:15am-",
         " -11:00pm",
