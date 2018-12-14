@@ -11,6 +11,12 @@ describe("HtmlParser", function () {
             prefix: "https://lib.hku.hk/hours/daily/opening_hours_",
             postfix: ".html",
             combinedUrl: "https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html",
+        },
+        {
+            date: "2018-01-01",
+            prefix: "somePrefix ",
+            postfix: " somePostfix",
+            combinedUrl: "somePrefix 2018-01-01 somePostfix",
         }
     ].forEach(({date, prefix, postfix, combinedUrl}) =>
         it(`should append date="${date}" to prefix="${prefix}" and postfix="${postfix}" to get combined url="${combinedUrl}"`, async function () {
