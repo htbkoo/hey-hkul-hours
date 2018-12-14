@@ -15,6 +15,10 @@ describe("HourRegexParser", function () {
         {input: "8:15am- 11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
         {input: "8:15am -11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
         {input: "8:15am-11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
+        {input: " 8:15am-11:00pm ", expected: {from: "8:15am", to: "11:00pm"}},
+        {input: " 8:15am-11:00pm", expected: {from: "8:15am", to: "11:00pm"}},
+        {input: "8:15am-11:00pm ", expected: {from: "8:15am", to: "11:00pm"}},
+        {input: " 8:15am - 11:00pm ", expected: {from: "8:15am", to: "11:00pm"}},
     ].forEach(({input, expected}) =>
         it(`should parse "${input}" from string into parts`, async function () {
             // given
