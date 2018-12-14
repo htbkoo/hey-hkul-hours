@@ -3,14 +3,17 @@ export type HourInString = {
     to: string,
 }
 
-const HourStringFormat = /(.+) - (.+)/;
+const DEFAULT_HOUR_STRING_FORMAT = /(.+) - (.+)/;
 
 export default class HourRegexParser {
-    constructor() {
+    private _hourFormat: RegExp;
+
+    constructor(hourFormat: RegExp = DEFAULT_HOUR_STRING_FORMAT) {
+        this._hourFormat = hourFormat;
     }
 
     parse(str: string): HourInString {
-        const result = HourStringFormat.exec(str);
+        const result = this._hourFormat.exec(str);
         return {
             from: result[1],
             to: result[2],
