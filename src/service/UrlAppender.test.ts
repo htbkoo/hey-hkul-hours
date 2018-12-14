@@ -5,17 +5,23 @@ import UrlAppender from "./UrlAppender";
 import * as moment from "moment";
 
 describe("HtmlParser", function () {
-    it(`should append date to base url to get combined url`, async function () {
-        // given
-        const prefix = "https://lib.hku.hk/hours/daily/opening_hours_", postfix = ".html";
-        const urlAppender = new UrlAppender(prefix, postfix);
+    [
+        {
+            date: "2018-12-13",
+            prefix: "https://lib.hku.hk/hours/daily/opening_hours_",
+            postfix: ".html",
+            combinedUrl: "https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html",
+        }
+    ].forEach(({date, prefix, postfix, combinedUrl}) =>
+        it(`should append date="${date}" to prefix="${prefix}" and postfix="${postfix}" to get combined url="${combinedUrl}"`, async function () {
+            // given
+            const urlAppender = new UrlAppender(prefix, postfix);
 
-        // when
-        const date = moment("2018-12-13");
-        const actualUrl = urlAppender.buildUrlWithDate(date);
+            // when
+            const actualUrl = urlAppender.buildUrlWithDate(moment(date));
 
-        // then
-        const combinedUrl = "https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html";
-        expect(actualUrl).toEqual(combinedUrl);
-    });
+            // then
+            expect(actualUrl).toEqual(combinedUrl);
+        })
+    );
 });
