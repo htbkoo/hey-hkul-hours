@@ -1,21 +1,25 @@
 import {when} from 'jest-when';
+import * as moment from "moment";
 
 import LibraryHoursFetcher from "./LibraryHoursFetcher";
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";
 import HtmlParser from "../service/HtmlParser";
+import UrlAppender from "../service/UrlAppender";
 
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
         // given
         const mockHtmlFetcher = {fetchHtml: jest.fn()};
-        when(mockHtmlFetcher.fetchHtml).calledWith("").mockReturnValue(htmlResponse);
+        when(mockHtmlFetcher.fetchHtml).calledWith("https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html").mockReturnValue(htmlResponse);
 
         const parser = new HtmlParser();
+        const appender = new UrlAppender("https://lib.hku.hk/hours/daily/opening_hours_", ".html");
 
-        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, parser);
+        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, parser, appender);
 
         // when
-        const hours = await fetcher.retrieveHours();
+        const date = moment("2018-12-13");
+        const hours = await fetcher.retrieveHours(date);
 
         // then
         expect(hours).toEqual({
