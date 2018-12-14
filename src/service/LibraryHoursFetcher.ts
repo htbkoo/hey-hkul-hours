@@ -4,8 +4,8 @@ import HtmlFetcher from "../external/HtmlFetcher";
 import HtmlParser from "./HtmlParser";
 
 export default class LibraryHoursFetcher {
-    private _htmlFetcher: HtmlFetcher;
-    private _parser: HtmlParser;
+    private readonly _htmlFetcher: HtmlFetcher;
+    private readonly _parser: HtmlParser;
 
     constructor(htmlFetcher: HtmlFetcher, parser: HtmlParser) {
         this._htmlFetcher = htmlFetcher;

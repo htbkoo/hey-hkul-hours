@@ -6,7 +6,7 @@ export type HourInString = {
 }
 
 export default class HourRegexParser {
-    private _hourFormat: RegExp;
+    private readonly _hourFormat: RegExp;
 
     constructor(hourFormat: RegExp = DEFAULT_HOUR_STRING_FORMAT) {
         this._hourFormat = hourFormat;
