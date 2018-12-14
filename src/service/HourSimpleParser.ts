@@ -5,10 +5,7 @@ export default class HourSimpleParser implements HourParser {
         const parts = toParts(str);
 
         if (parts.isValid) {
-            return [{
-                from: parts.rawFrom.trim(),
-                to: parts.rawTo.trim(),
-            }];
+            return [parts.toHour()];
         } else {
             throw new TypeError(`Unable to parse input: "${str}"`);
         }
@@ -25,6 +22,12 @@ export default class HourSimpleParser implements HourParser {
                 },
                 get rawTo(): string {
                     return parts[1];
+                },
+                toHour() {
+                    return {
+                        from: this.rawFrom.trim(),
+                        to: this.rawTo.trim(),
+                    }
                 }
             };
 
