@@ -1,11 +1,8 @@
+import HourParser, {HourInString} from "./HourParser";
+
 const DEFAULT_HOUR_STRING_FORMAT = /([^ ].*) ?- ?([^ ].*)/;
 
-export type HourInString = {
-    from: string,
-    to: string,
-}
-
-export default class HourRegexParser {
+export default class HourRegexParser implements HourParser{
     private readonly _hourFormat: RegExp;
 
     constructor(hourFormat: RegExp = DEFAULT_HOUR_STRING_FORMAT) {
