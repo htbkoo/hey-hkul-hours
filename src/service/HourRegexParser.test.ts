@@ -38,13 +38,25 @@ describe("HourRegexParser", function () {
         });
     });
 
-    it("should handle unparsable input gracefully", function () {
-        // given
-        const parser = new HourRegexParser();
+    [
+        "unparsable string",
+        "8:15am- 11:00pm",
+        "8:15am -11:00pm",
+        "8:15am - ",
+        "8:15am -",
+        "8:15am-",
+        " -11:00pm",
+        "- 11:00pm",
+        "-11:00pm",
+    ].forEach(input =>
+        it(`should handle unparsable input "${input}" gracefully`, function () {
+            // given
+            const parser = new HourRegexParser();
 
-        // when
-        expect(() => parser.parse("unparsable string"))
-        // then
-            .toThrow(`Unable to parse input: "unparsable string"`);
-    });
+            // when
+            expect(() => parser.parse(input))
+            // then
+                .toThrow(`Unable to parse input: "${input}"`);
+        })
+    );
 });
