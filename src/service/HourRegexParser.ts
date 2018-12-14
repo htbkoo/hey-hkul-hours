@@ -14,9 +14,13 @@ export default class HourRegexParser {
 
     parse(str: string): HourInString {
         const result = this._hourFormat.exec(str);
-        return {
-            from: result[1],
-            to: result[2],
+        if (result !== null) {
+            return {
+                from: result[1],
+                to: result[2],
+            }
+        }else{
+            throw new TypeError( `Unable to parse input: "${str}"`);
         }
     }
 }

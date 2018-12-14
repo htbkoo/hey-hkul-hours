@@ -33,8 +33,18 @@ describe("HourRegexParser", function () {
 
         // then
         expect(hourInString).toEqual({
-           from:"8:15am from previous day",
-           to:"11:00pm of next day",
+            from: "8:15am from previous day",
+            to: "11:00pm of next day",
         });
+    });
+
+    it("should handle unparsable input gracefully", function () {
+        // given
+        const parser = new HourRegexParser();
+
+        // when
+        expect(() => parser.parse("unparsable string"))
+        // then
+            .toThrow(`Unable to parse input: "unparsable string"`);
     });
 });
