@@ -1,5 +1,3 @@
-import {JSDOM} from "jsdom";
-
 import HtmlFetcher from "../external/HtmlFetcher";
 import HtmlParser from "../service/HtmlParser";
 
