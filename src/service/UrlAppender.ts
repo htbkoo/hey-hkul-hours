@@ -1,6 +1,8 @@
 import {JSDOM} from "jsdom";
 import {Moment} from "moment";
 
+const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
+
 export default class UrlAppender {
     private _prefix: string;
     private _postfix: string;
@@ -11,6 +13,6 @@ export default class UrlAppender {
     }
 
     buildUrlWithDate(date: Moment): string {
-        return `${this._prefix}${date.format("YYYY-MM-DD")}${this._postfix}`;
+        return `${this._prefix}${date.format(DEFAULT_DATE_FORMAT)}${this._postfix}`;
     }
 }
