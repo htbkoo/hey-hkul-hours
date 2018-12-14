@@ -1,9 +1,9 @@
+const DEFAULT_HOUR_STRING_FORMAT = /([^ ].*) ?- ?([^ ].*)/;
+
 export type HourInString = {
     from: string,
     to: string,
 }
-
-const DEFAULT_HOUR_STRING_FORMAT = /([^ ].*) ?- ?([^ ].*)/;
 
 export default class HourRegexParser {
     private _hourFormat: RegExp;
