@@ -9,9 +9,7 @@ import UrlAppender from "../service/UrlAppender";
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
         // given
-        const mockHtmlFetcher = {fetchHtml: jest.fn()};
-        when(mockHtmlFetcher.fetchHtml).calledWith("https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html").mockReturnValue(htmlResponse);
-
+        const mockHtmlFetcher = newMockHtmlFetcher("https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html", htmlResponse);
         const parser = new HtmlParser();
         const appender = new UrlAppender("https://lib.hku.hk/hours/daily/opening_hours_", ".html");
 
@@ -37,4 +35,10 @@ describe("LibraryHoursFetcher", function () {
             "Yu Chun Keung Medical Library": "8:15am - 11:00pm",
         });
     });
+
+    function newMockHtmlFetcher(url: string, response: any) {
+        const mockFetcher = {fetchHtml: jest.fn()};
+        when(mockFetcher.fetchHtml).calledWith(url).mockReturnValue(response);
+        return mockFetcher;
+    }
 });
