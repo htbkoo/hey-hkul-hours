@@ -2,10 +2,12 @@ import {when} from 'jest-when';
 
 import HourRegexParser from "./HourRegexParser";
 import HourParser from "./HourParser";
+import HourSimpleParser from "./HourSimpleParser";
 
 describe("HourParser", function () {
     [
         {parserName: "HourRegexParser", parser: new HourRegexParser()},
+        {parserName: "HourSimpleParser", parser: new HourSimpleParser()},
     ].forEach(({parserName, parser}: { parserName: string, parser: HourParser }) => {
         describe(parserName, function () {
             [
