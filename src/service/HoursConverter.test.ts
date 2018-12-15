@@ -1,6 +1,4 @@
 import {when} from 'jest-when';
-import * as moment from "moment";
-import {Moment} from "moment";
 
 import HoursConverter from "./HoursConverter";
 
@@ -22,8 +20,4 @@ describe("HoursConverter", function () {
             expect(hours.asArray()).toEqual([]);
         })
     );
-
-    function hour(str: string): Moment {
-        return moment(str, "h:ma");
-    }
 });
