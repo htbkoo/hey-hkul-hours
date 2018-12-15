@@ -8,5 +8,5 @@ export function unparsableStringToHourError(str: string){
 }
 
 export default interface HourRegexParser {
-    parse(str: string): HourInString[]
+    parse(str: string): HourInString
 }

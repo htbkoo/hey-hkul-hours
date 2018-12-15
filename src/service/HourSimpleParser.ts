@@ -1,11 +1,11 @@
 import HourParser, {HourInString, unparsableStringToHourError} from "./HourParser";
 
 export default class HourSimpleParser implements HourParser {
-    parse(str: string): HourInString[] {
+    parse(str: string): HourInString {
         const parts = toParts(str);
 
         if (parts.isValid) {
-            return [parts.toHour()];
+            return parts.toHour();
         } else {
             throw unparsableStringToHourError(str);
         }

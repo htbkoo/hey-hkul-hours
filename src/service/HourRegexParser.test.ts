@@ -11,9 +11,9 @@ describe("HourRegexParser", function () {
         const hourInString = parser.parse("8:15am from previous day-11:00pm of next day");
 
         // then
-        expect(hourInString).toEqual([{
+        expect(hourInString).toEqual({
             from: "8:15am from previous day",
             to: "11:00pm of next day",
-        }]);
+        });
     });
 });

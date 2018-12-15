@@ -9,13 +9,13 @@ export default class HourRegexParser implements HourParser {
         this._hourFormat = hourFormat;
     }
 
-    parse(str: string): HourInString[] {
+    parse(str: string): HourInString {
         const result = this._hourFormat.exec(str);
         if (result !== null) {
-            return [{
+            return {
                 from: result[1].trim(),
                 to: result[2].trim(),
-            }]
+            };
         } else {
             throw unparsableStringToHourError(str);
         }
