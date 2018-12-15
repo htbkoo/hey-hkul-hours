@@ -1,4 +1,5 @@
 import HourParser, {HourInString, unparsableStringToHourError} from "./HourParser";
+import {isNonEmpty} from "../../utils/StringUtils";
 
 export default class SimpleHourParser implements HourParser {
     parse(str: string): HourInString {
@@ -16,7 +17,7 @@ export default class SimpleHourParser implements HourParser {
 
             return {
                 get isValid(): boolean {
-                    return parts.length === 2 && isPartValid(rawFrom) && isPartValid(rawTo);
+                    return parts.length === 2 && isNonEmpty(rawFrom) && isNonEmpty(rawTo);
                 },
                 toHour() {
                     return {
@@ -25,10 +26,6 @@ export default class SimpleHourParser implements HourParser {
                     }
                 }
             };
-
-            function isPartValid(rawStr: string) {
-                return rawStr && rawStr.trim() !== "";
-            }
         }
     }
 }
