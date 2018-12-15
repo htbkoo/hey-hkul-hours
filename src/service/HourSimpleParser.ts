@@ -1,4 +1,4 @@
-import HourParser, {HourInString} from "./HourParser";
+import HourParser, {HourInString, unparsableStringToHourError} from "./HourParser";
 
 export default class HourSimpleParser implements HourParser {
     parse(str: string): HourInString[] {
@@ -7,7 +7,7 @@ export default class HourSimpleParser implements HourParser {
         if (parts.isValid) {
             return [parts.toHour()];
         } else {
-            throw new TypeError(`Unable to parse input: "${str}"`);
+            throw unparsableStringToHourError(str);
         }
 
         function toParts(str: string) {
