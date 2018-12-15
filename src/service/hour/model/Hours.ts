@@ -25,7 +25,7 @@ export default class Hours {
         return this._hours.map(hour => hour.clone());
     }
 
-    static HoursBuilder = class {
+    private static HoursBuilder = class {
         private readonly _hours: Hour[];
 
         public static basedOn(hours: Hours) {
