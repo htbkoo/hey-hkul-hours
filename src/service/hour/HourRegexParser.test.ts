@@ -1,7 +1,7 @@
 import {when} from 'jest-when';
 
 import RegexHourParser from "./RegexHourParser";
-import {HourInString} from "./model/HourInString";
+import HourInString from "./model/HourInString";
 
 describe("RegexHourParser", function () {
     it("should be possible to override hour format through constructor argument", function () {

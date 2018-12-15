@@ -1,6 +1,6 @@
 import HourParser, {unparsableStringToHourError} from "./HourParser";
 import {isNonEmpty} from "../../utils/StringUtils";
-import {HourInString} from "./model/HourInString";
+import HourInString from "./model/HourInString";
 
 export default class SimpleHourParser implements HourParser {
     parse(str: string): HourInString {

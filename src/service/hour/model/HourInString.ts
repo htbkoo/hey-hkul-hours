@@ -1,4 +1,4 @@
-export class HourInString {
+export default class HourInString {
     private readonly _from: string;
     private readonly _to: string;
 

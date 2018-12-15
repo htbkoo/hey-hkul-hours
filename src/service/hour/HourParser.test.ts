@@ -3,7 +3,7 @@ import {when} from 'jest-when';
 import RegexHourParser from "./RegexHourParser";
 import HourParser from "./HourParser";
 import SimpleHourParser from "./SimpleHourParser";
-import {HourInString} from "./model/HourInString";
+import HourInString from "./model/HourInString";
 
 describe("HourParser", function () {
     [
