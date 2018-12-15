@@ -5,17 +5,23 @@ import {Moment} from "moment";
 import HoursConverter from "./HoursConverter";
 
 describe("HoursConverter", function () {
-    it(`should be able to recognized "CLOSED" and will return Close`, function () {
-        // given
-        const parser = new HoursConverter();
+    [
+        "CLOSED",
+        "closed",
+        "Closed",
+    ].forEach(str =>
+        it(`should be able to recognized "${str}" and will return hours that isClosed`, function () {
+            // given
+            const parser = new HoursConverter();
 
-        // when
-        const hours = parser.convert("Closed");
+            // when
+            const hours = parser.convert(str);
 
-        // then
-        expect(hours.isClosed()).toEqual(true);
-        expect(hours.asArray()).toEqual([]);
-    });
+            // then
+            expect(hours.isClosed()).toEqual(true);
+            expect(hours.asArray()).toEqual([]);
+        })
+    );
 
     function hour(str: string): Moment {
         return moment(str, "h:ma");
