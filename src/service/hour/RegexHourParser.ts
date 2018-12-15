@@ -1,4 +1,5 @@
-import HourParser, {HourInString, unparsableStringToHourError} from "./HourParser";
+import HourParser, {unparsableStringToHourError} from "./HourParser";
+import {HourInString} from "./HourInString";
 
 const DEFAULT_HOUR_STRING_FORMAT = /([^ -][^-]*) ?- ?([^ -][^-]*)/;
 
@@ -12,10 +13,7 @@ export default class RegexHourParser implements HourParser {
     parse(str: string): HourInString {
         const result = this._hourFormat.exec(str);
         if (result !== null) {
-            return {
-                from: result[1].trim(),
-                to: result[2].trim(),
-            };
+            return new HourInString({from: result[1].trim(), to: result[2].trim()});
         } else {
             throw unparsableStringToHourError(str);
         }

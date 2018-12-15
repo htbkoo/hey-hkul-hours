@@ -1,7 +1,4 @@
-export type HourInString = {
-    from: string,
-    to: string,
-}
+import {HourInString} from "./HourInString";
 
 export function unparsableStringToHourError(str: string){
     return new TypeError(`Unable to parse input: "${str}"`)

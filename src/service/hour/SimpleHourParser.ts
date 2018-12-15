@@ -1,5 +1,6 @@
-import HourParser, {HourInString, unparsableStringToHourError} from "./HourParser";
+import HourParser, {unparsableStringToHourError} from "./HourParser";
 import {isNonEmpty} from "../../utils/StringUtils";
+import {HourInString} from "./HourInString";
 
 export default class SimpleHourParser implements HourParser {
     parse(str: string): HourInString {
@@ -20,10 +21,7 @@ export default class SimpleHourParser implements HourParser {
                     return parts.length === 2 && isNonEmpty(rawFrom) && isNonEmpty(rawTo);
                 },
                 toHour() {
-                    return {
-                        from: rawFrom.trim(),
-                        to: rawTo.trim(),
-                    }
+                    return new HourInString({from: rawFrom.trim(), to: rawTo.trim()});
                 }
             };
         }
