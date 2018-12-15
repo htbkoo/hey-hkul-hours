@@ -1,5 +1,6 @@
 import MomentConverter from "./MomentConverter";
-import {hour} from "../../../tests/utils/HourUtils";
+
+import {hour} from "../../tests/utils/HourUtils";
 
 describe("MomentConverter", function () {
     [
