@@ -2,12 +2,12 @@ import {when} from 'jest-when';
 import * as moment from "moment";
 import {Moment} from "moment";
 
-import HourConverter from "./HourConverter";
+import HoursConverter from "./HoursConverter";
 
-describe("HourConverter", function () {
+describe("HoursConverter", function () {
     it(`should be able to recognized "CLOSED" and will return Close`, function () {
         // given
-        const parser = new HourConverter();
+        const parser = new HoursConverter();
 
         // when
         const hours = parser.convert("Closed");

@@ -1,6 +1,6 @@
 import Hours from "./hour/model/Hours";
 
-export default class HourConverter {
+export default class HoursConverter {
     constructor() {
     }
 
