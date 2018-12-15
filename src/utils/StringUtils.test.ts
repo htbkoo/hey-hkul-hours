@@ -1,5 +1,5 @@
 import {when} from 'jest-when';
-import {areEqualIgnoringCase} from "./StringUtils";
+import {areEqualIgnoringCase, isNonEmpty} from "./StringUtils";
 
 describe("StringUtils.ts", function () {
     [
@@ -18,6 +18,23 @@ describe("StringUtils.ts", function () {
 
             // then
             expect(actual).toEqual(areEqual);
+        })
+    );
+
+    [
+        {str: "closed", expected: true},
+        {expected: false},
+        {str: "", expected: false},
+        {str: " ", expected: false},
+        {str: "  ", expected: false},
+    ].forEach(({str, expected}) =>
+        it(`should check whether str="${str}" is non empty = "${expected}"`, function () {
+            // given
+            // when
+            const actual = isNonEmpty(str);
+
+            // then
+            expect(actual).toEqual(expected);
         })
     );
 });
