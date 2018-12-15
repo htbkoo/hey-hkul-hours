@@ -7,6 +7,6 @@ export function unparsableStringToHourError(str: string){
     return new TypeError(`Unable to parse input: "${str}"`)
 }
 
-export default interface HourRegexParser {
+export default interface RegexHourParser {
     parse(str: string): HourInString
 }

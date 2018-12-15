@@ -2,7 +2,7 @@ import HourParser, {HourInString, unparsableStringToHourError} from "./HourParse
 
 const DEFAULT_HOUR_STRING_FORMAT = /([^ -][^-]*) ?- ?([^ -][^-]*)/;
 
-export default class HourRegexParser implements HourParser {
+export default class RegexHourParser implements HourParser {
     private readonly _hourFormat: RegExp;
 
     constructor(hourFormat: RegExp = DEFAULT_HOUR_STRING_FORMAT) {
