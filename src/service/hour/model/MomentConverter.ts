@@ -1,6 +1,8 @@
 import * as moment from "moment";
 import {Moment} from "moment";
 
+import {isNonEmpty} from "../../../utils/StringUtils";
+
 const FOLLOWING_DAY_REGEX = /(.+)of the following day/;
 const DEFAULT_TIME_FORMAT = "h:ma";
 
@@ -27,10 +29,6 @@ export default class MomentConverter {
                     return result[1];
                 }
             };
-
-            function isNonEmpty(rawStr: string) {
-                return rawStr && rawStr.trim() !== "";
-            }
         }
     }
 }
