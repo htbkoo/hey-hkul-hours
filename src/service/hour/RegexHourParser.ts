@@ -1,5 +1,5 @@
 import HourParser, {unparsableStringToHourError} from "./HourParser";
-import {HourInString} from "./HourInString";
+import {HourInString} from "./model/HourInString";
 
 const DEFAULT_HOUR_STRING_FORMAT = /([^ -][^-]*) ?- ?([^ -][^-]*)/;
 
