@@ -12,21 +12,16 @@ export default class HourSimpleParser implements HourParser {
 
         function toParts(str: string) {
             const parts = str.split("-");
+            const rawFrom = parts[0], rawTo = parts[1];
 
             return {
                 get isValid(): boolean {
-                    return parts.length === 2 && isPartValid(this.rawFrom) && isPartValid(this.rawTo);
-                },
-                get rawFrom(): string {
-                    return parts[0];
-                },
-                get rawTo(): string {
-                    return parts[1];
+                    return parts.length === 2 && isPartValid(rawFrom) && isPartValid(rawTo);
                 },
                 toHour() {
                     return {
-                        from: this.rawFrom.trim(),
-                        to: this.rawTo.trim(),
+                        from: rawFrom.trim(),
+                        to: rawTo.trim(),
                     }
                 }
             };
