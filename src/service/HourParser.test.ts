@@ -49,6 +49,7 @@ describe("HourParser", function () {
                 " -11:00pm",
                 "- 11:00pm",
                 "-11:00pm",
+                "--11:00pm",
             ].forEach(input =>
                 it(`should handle unparsable input "${input}" gracefully`, function () {
                     // given

@@ -1,6 +1,6 @@
 import HourParser, {HourInString} from "./HourParser";
 
-const DEFAULT_HOUR_STRING_FORMAT = /([^ ].*) ?- ?([^ ].*)/;
+const DEFAULT_HOUR_STRING_FORMAT = /([^ -][^-]*) ?- ?([^ -][^-]*)/;
 
 export default class HourRegexParser implements HourParser {
     private readonly _hourFormat: RegExp;
