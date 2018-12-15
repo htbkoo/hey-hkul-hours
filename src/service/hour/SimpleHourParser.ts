@@ -1,6 +1,6 @@
 import HourParser, {HourInString, unparsableStringToHourError} from "./HourParser";
 
-export default class HourSimpleParser implements HourParser {
+export default class SimpleHourParser implements HourParser {
     parse(str: string): HourInString {
         const parts = toParts(str);
 
