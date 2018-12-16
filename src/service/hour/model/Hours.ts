@@ -9,10 +9,6 @@ export default class Hours {
         this._hours = hours;
     }
 
-    public static hoursBuilder() {
-        return new Hours.HoursBuilder();
-    }
-
     public static closed(): Hours {
         return Hours.CLOSED;
     }
@@ -23,28 +19,5 @@ export default class Hours {
 
     asArray(): Hour[] {
         return this._hours.map(hour => hour.clone());
-    }
-
-    private static HoursBuilder = class {
-        private readonly _hours: Hour[] = [];
-
-        public static basedOn(hours: Hours) {
-            return hours.asArray()
-                .reduce(
-                    (builder, hour) => builder.withHour(hour),
-                    Hours.hoursBuilder()
-                );
-        }
-
-        // IntelliJ failed to recognize the usage
-        // noinspection JSUnusedGlobalSymbols
-        public withHour(hour: Hour) {
-            this._hours.push(hour);
-            return this;
-        }
-
-        public build(): Hours {
-            return new Hours(this._hours);
-        }
     }
 }
