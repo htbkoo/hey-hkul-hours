@@ -4,7 +4,10 @@
   "description": "An app to quickly retrieve the opening hours and calendar for HKU Library ",
   "main": "index.js",
   "scripts": {
-    "test": "jest --ci"
+    "test": "jest",
+    "test-unit": "jest --testPathPattern=\".*\\.test\\.tsx?\"",
+    "test:ci": "jest --ci",
+    "test-unit:ci": "jest --ci --testPathPattern=\".*\\.test\\.tsx?\""
   },
   "repository": {
     "type": "git",
