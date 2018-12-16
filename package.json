@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "test-unit": "jest --testPathPattern=\".*\\.test\\.tsx?\"",
-    "test:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./.circleci/jest.config.js",
-    "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./.circleci/jest.config.js --testPathPattern=\".*\\.test\\.tsx?\""
+    "test:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js",
+    "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js --testPathPattern=\".*\\.test\\.tsx?\""
   },
   "repository": {
     "type": "git",
