@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test-unit": "jest --testPathPattern=\".*\\.test\\.tsx?\"",
-    "test:cicleci": "jest --ci --coverage --reporters=default --reporters=jest-junit",
+    "test:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit",
     "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --testPathPattern=\".*\\.test\\.tsx?\""
   },
   "repository": {
