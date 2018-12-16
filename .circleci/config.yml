@@ -19,9 +19,14 @@ jobs: # a collection of steps
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: Install JUnit coverage reporter
+          command: npm install -D jest-junit
       - run: # run tests
           name: test
-          command: npm run test:ci
+          command: npm run test:circleci
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
 # Coverage should be provided by jest
 #      - run: # run coverage report
 #          name: code-coverage
