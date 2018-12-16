@@ -26,7 +26,7 @@ export default class Hours {
     }
 
     private static HoursBuilder = class {
-        private readonly _hours: Hour[];
+        private readonly _hours: Hour[] = [];
 
         public static basedOn(hours: Hours) {
             return hours.asArray()
