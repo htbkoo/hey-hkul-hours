@@ -8,4 +8,6 @@ export default interface Hour {
     getTo(): Moment
 
     clone(): Hour
+
+    equals(anotherHour: Hour): boolean
 }
