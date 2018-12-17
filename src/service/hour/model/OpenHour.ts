@@ -27,7 +27,7 @@ export default class OpenHour implements Hour {
         return new OpenHour({from: this.getFrom(), to: this.getTo()});
     }
 
-    equals(anotherHour: OpenHour): boolean {
+    equals(anotherHour: Hour): boolean {
         return this._from.isSame(anotherHour.getFrom()) && this._to.isSame(anotherHour.getTo());
     }
 }
