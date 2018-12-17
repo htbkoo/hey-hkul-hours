@@ -26,4 +26,8 @@ export default class OpenHour implements Hour {
     clone(): Hour {
         return new OpenHour({from: this.getFrom(), to: this.getTo()});
     }
+
+    equals(anotherHour: OpenHour): boolean {
+        return this.getFrom().isSame(anotherHour.getFrom()) && this.getTo().isSame(anotherHour.getTo());
+    }
 }

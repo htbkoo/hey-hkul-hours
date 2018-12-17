@@ -16,4 +16,16 @@ describe("OpenHour", function () {
         expect(openHour.getFrom().isSame(from)).toEqual(true);
         expect(openHour.getTo().isSame(to)).toEqual(true);
     });
+
+    it("should test that 2 same OpenHours are equal to each other", function () {
+        // given
+        const from = hour("8:30am"), to= hour("11:00pm");
+
+        // when
+        const openHour1 = new OpenHour({from, to}), openHour2 = new OpenHour({from, to});
+
+        // then
+        expect(openHour1.equals(openHour2)).toEqual(true);
+        expect(openHour2.equals(openHour1)).toEqual(true);
+    });
 });
