@@ -1,7 +1,7 @@
 import {when} from 'jest-when';
 
 import HourInString from "./HourInString";
-import {Hour} from "./Hour";
+import Hour from "./Hour";
 import MomentConverter from "../MomentConverter";
 import {hour} from "../../../tests/utils/HourUtils";
 

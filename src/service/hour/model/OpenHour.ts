@@ -1,6 +1,6 @@
 import {Moment} from "moment";
 
-import {Hour} from "./Hour";
+import Hour from "./Hour";
 
 export default class OpenHour implements Hour {
     private readonly _from: Moment;

@@ -1,4 +1,4 @@
-import {Hour} from "./Hour";
+import Hour from "./Hour";
 import MomentConverter from "../MomentConverter";
 import OpenHour from "./OpenHour";
 

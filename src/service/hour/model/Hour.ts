@@ -1,6 +1,6 @@
 import {Moment} from "moment";
 
-export interface Hour {
+export default interface Hour {
     isClosed(): boolean
 
     getFrom(): Moment
