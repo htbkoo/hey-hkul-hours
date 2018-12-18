@@ -13,8 +13,8 @@ describe("OpenHour", function () {
 
         // then
         expect(openHour.isClosed()).toEqual(false);
-        expect(openHour.getFrom().isSame(from)).toEqual(true);
-        expect(openHour.getTo().isSame(to)).toEqual(true);
+        expect(openHour.getFrom()).toEqual(from);
+        expect(openHour.getTo()).toEqual(to);
     });
 
     it("should test that 2 same OpenHours are equal to each other", function () {
