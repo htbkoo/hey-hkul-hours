@@ -1,4 +1,5 @@
 import Hour from "./Hour";
+import OpenHour from "./OpenHour";
 
 export default class Hours {
     private static readonly CLOSED = new Hours([]);
@@ -7,6 +8,10 @@ export default class Hours {
 
     private constructor(hours: Hour[]) {
         this._hours = hours;
+    }
+
+    public static openHours(openHours: OpenHour[]): Hours {
+        return new Hours(openHours.map(hour => hour.clone()));
     }
 
     public static closed(): Hours {
