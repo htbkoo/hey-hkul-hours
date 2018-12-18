@@ -56,6 +56,25 @@ describe("OpenHour", function () {
         });
     });
 
+    describe("immutability", function () {
+        it(`should not affect OpenHour when input moments are mutated`, async function () {
+            // given
+            const from = hour("8:30am"), to = hour("11:00pm");
+            const openHour = new OpenHour({from, to});
+
+            // when
+            from.add(10, "m");
+            to.subtract(1, "h");
+
+            // then
+            expect(from).toEqual(hour("8:30am").add(10, "m"));
+            expect(to).toEqual(hour("11:00pm").subtract(1, "h"));
+
+            expect(openHour.getFrom()).toEqual(hour("8:30am"));
+            expect(openHour.getTo()).toEqual(hour("11:00pm"));
+        });
+    });
+
     function assertOpenHour(openHour1: OpenHour) {
         return {
             toEqual(openHour2) {
