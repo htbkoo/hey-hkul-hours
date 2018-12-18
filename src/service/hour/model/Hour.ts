@@ -1,6 +1,6 @@
 import {Moment} from "moment";
 
-export interface Hour {
+export default interface Hour {
     isClosed(): boolean
 
     getFrom(): Moment
@@ -8,4 +8,6 @@ export interface Hour {
     getTo(): Moment
 
     clone(): Hour
+
+    equals(anotherHour: Hour): boolean
 }

@@ -1,6 +1,6 @@
 import {Moment} from "moment";
 
-import {Hour} from "./Hour";
+import Hour from "./Hour";
 
 export default class OpenHour implements Hour {
     private readonly _from: Moment;
@@ -25,5 +25,9 @@ export default class OpenHour implements Hour {
 
     clone(): Hour {
         return new OpenHour({from: this.getFrom(), to: this.getTo()});
+    }
+
+    equals(anotherHour: Hour): boolean {
+        return this._from.isSame(anotherHour.getFrom()) && this._to.isSame(anotherHour.getTo());
     }
 }

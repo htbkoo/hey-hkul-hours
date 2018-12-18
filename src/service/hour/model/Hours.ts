@@ -1,4 +1,4 @@
-import {Hour} from "./Hour";
+import Hour from "./Hour";
 
 export default class Hours {
     private static readonly CLOSED = new Hours([]);
