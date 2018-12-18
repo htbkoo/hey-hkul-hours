@@ -56,16 +56,23 @@ describe("OpenHour", function () {
         return {
             toEqual(openHour2) {
                 expect(openHour1).toEqual(openHour2);
-                expect(openHour1.equals(openHour2)).toEqual(true);
-                expect(openHour2.equals(openHour1)).toEqual(true);
+                assertEqualsTo(openHour2).is(true);
             },
             not: {
                 toEqual(openHour2) {
                     expect(openHour1).not.toEqual(openHour2);
-                    expect(openHour1.equals(openHour2)).toEqual(false);
-                    expect(openHour2.equals(openHour1)).toEqual(false);
+                    assertEqualsTo(openHour2).is(false);
                 }
             }
         };
+
+        function assertEqualsTo(openHour2) {
+            return {
+                is(expected) {
+                    expect(openHour1.equals(openHour2)).toEqual(expected);
+                    expect(openHour2.equals(openHour1)).toEqual(expected);
+                }
+            }
+        }
     }
 });
