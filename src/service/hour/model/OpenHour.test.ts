@@ -39,7 +39,7 @@ describe("OpenHour", function () {
         const openHour1 = new OpenHour({from: from1, to: to1}), openHour2 = new OpenHour({from: from2, to: to2});
 
         // then
-        expect(openHour1).toEqual(openHour2);
+        expect(openHour1).not.toEqual(openHour2);
         expect(openHour1.equals(openHour2)).toEqual(false);
         expect(openHour2.equals(openHour1)).toEqual(false);
     });
