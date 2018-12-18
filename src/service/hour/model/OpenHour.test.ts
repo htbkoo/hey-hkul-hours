@@ -67,11 +67,18 @@ describe("OpenHour", function () {
             to.subtract(1, "h");
 
             // then
-            expect(from).toEqual(hour("8:30am").add(10, "m"));
-            expect(to).toEqual(hour("11:00pm").subtract(1, "h"));
+            assertInputMutated();
+            assertOpenHourNotMutated();
 
-            expect(openHour.getFrom()).toEqual(hour("8:30am"));
-            expect(openHour.getTo()).toEqual(hour("11:00pm"));
+            function assertInputMutated() {
+                expect(from).toEqual(hour("8:30am").add(10, "m"));
+                expect(to).toEqual(hour("11:00pm").subtract(1, "h"));
+            }
+
+            function assertOpenHourNotMutated() {
+                expect(openHour.getFrom()).toEqual(hour("8:30am"));
+                expect(openHour.getTo()).toEqual(hour("11:00pm"));
+            }
         });
     });
 
