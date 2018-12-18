@@ -25,8 +25,23 @@ describe("OpenHour", function () {
         const openHour1 = new OpenHour({from, to}), openHour2 = new OpenHour({from, to});
 
         // then
+        expect(openHour1).toEqual(openHour2);
         expect(openHour1.equals(openHour2)).toEqual(true);
         expect(openHour2.equals(openHour1)).toEqual(true);
+    });
+
+    it("should test that 2 different OpenHours are not equal to each other", function () {
+        // given
+        const from1 = hour("8:30am"), to1 = hour("11:00pm");
+        const from2 = hour("8:31am"), to2 = hour("11:00pm");
+
+        // when
+        const openHour1 = new OpenHour({from: from1, to: to1}), openHour2 = new OpenHour({from: from2, to: to2});
+
+        // then
+        expect(openHour1).toEqual(openHour2);
+        expect(openHour1.equals(openHour2)).toEqual(false);
+        expect(openHour2.equals(openHour1)).toEqual(false);
     });
 
     it("should test that cloned OpenHour is equal to OpenHour", function () {
