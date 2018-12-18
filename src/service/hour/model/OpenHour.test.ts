@@ -4,7 +4,7 @@ import OpenHour from "./OpenHour";
 import {hour} from "../../../tests/utils/HourUtils";
 
 describe("OpenHour", function () {
-    it(`should be able to create closed hours`, async function () {
+    it(`should be able to create open hour`, async function () {
         // given
         const from = hour("8:30am"), to = hour("11:00pm");
 
