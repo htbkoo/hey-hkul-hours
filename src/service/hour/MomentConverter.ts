@@ -8,27 +8,31 @@ const DEFAULT_TIME_FORMAT = "h:ma";
 
 export default class MomentConverter {
     convert(str: string): Moment {
-        const parseResult = parsingAsFollowingDay();
+        const parseResult = this.parsingAsFollowingDay(str);
 
         if (parseResult.isFollowingDay()) {
             return parseResult.asMoment();
         } else {
-            return moment(str, DEFAULT_TIME_FORMAT);
+            return MomentConverter.toMoment(str);
         }
+    }
 
-        function parsingAsFollowingDay() {
-            const result = FOLLOWING_DAY_REGEX.exec(str);
-            return {
-                isFollowingDay() {
-                    return result !== null && isNonEmpty(this.getTime());
-                },
-                asMoment() {
-                    return moment(this.getTime(), DEFAULT_TIME_FORMAT).add(1, "d");
-                },
-                getTime(): string {
-                    return result[1];
-                }
-            };
-        }
+    private parsingAsFollowingDay(str) {
+        const result = FOLLOWING_DAY_REGEX.exec(str);
+        return {
+            isFollowingDay() {
+                return result !== null && isNonEmpty(this.getTime());
+            },
+            asMoment() {
+                return MomentConverter.toMoment(this.getTime()).add(1, "d");
+            },
+            getTime(): string {
+                return result[1];
+            }
+        };
+    }
+
+    private static toMoment(str: string): Moment {
+        return moment(str.trim(), DEFAULT_TIME_FORMAT)
     }
 }

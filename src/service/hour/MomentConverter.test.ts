@@ -16,6 +16,7 @@ describe("MomentConverter", function () {
             const actual = converter.convert(str);
 
             // then
+            expect(actual).toEqual(expected);
             expect(actual.isSame(expected)).toEqual(true);
         })
     );
