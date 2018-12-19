@@ -1,5 +1,4 @@
 import Hour from "./Hour";
-import OpenHour from "./OpenHour";
 import {errr} from "preconditions";
 
 const preconditions = errr();
@@ -13,7 +12,7 @@ export default class Hours {
         this._hours = hours;
     }
 
-    public static openHours(openHours: OpenHour[]): Hours {
+    public static openHours(openHours: Hour[]): Hours {
         preconditions.shouldNotBeEmpty(openHours, "Cannot create openHours with empty array - maybe you want to create Hours.closedHours() instead?").test();
         return new Hours(openHours.map(hour => hour.clone()));
     }
