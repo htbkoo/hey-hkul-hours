@@ -10,10 +10,10 @@ describe("HoursConverter", function () {
     ].forEach(str =>
         it(`should be able to recognized "${str}" and will return hours that isClosed`, function () {
             // given
-            const parser = new HoursConverter();
+            const converter = new HoursConverter(jest.fn() as any, jest.fn() as any, jest.fn() as any);
 
             // when
-            const hours = parser.convert(str);
+            const hours = converter.convert(str);
 
             // then
             expect(hours.isClosed()).toEqual(true);
