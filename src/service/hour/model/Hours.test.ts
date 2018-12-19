@@ -24,6 +24,15 @@ describe("Hours", function () {
                 expect(hours.asArray()).toEqual(openHours)
             })
         );
+
+        it("should throw Error if input array is empty", function () {
+            // given
+            const emptyInput = [];
+
+            // when
+            // then
+            expect(() => Hours.openHours(emptyInput)).toThrowError("Cannot create openHours with empty array - maybe you want to create Hours.closedHours() instead?");
+        });
     });
 
     describe("closed hours", function () {
