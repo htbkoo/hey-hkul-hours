@@ -2,7 +2,7 @@ import * as moment from "moment";
 import {Moment} from "moment";
 import {errr} from "preconditions";
 
-import LibraryHours, {ReadOnlyAllLibrariesHours} from "./LibraryHours";
+import LibraryHours, {ReadOnlyAllZonesHours} from "./LibraryHours";
 import HoursConverter from "../../HoursConverter";
 
 const KEY_FOR_DATE = "Library";
@@ -34,7 +34,7 @@ export default class HkuLibraryHoursFactory {
         return moment(map[KEY_FOR_DATE], DEFAULT_DATE_FORMAT)
     }
 
-    private getHours(map: InputMapType): ReadOnlyAllLibrariesHours {
+    private getHours(map: InputMapType): ReadOnlyAllZonesHours {
         const {[KEY_FOR_DATE]: _, ...hours} = map;
 
         return Object.keys(hours).reduce((obj, key) => {
@@ -48,7 +48,7 @@ export default class HkuLibraryHoursFactory {
             getDate() {
                 return date;
             },
-            getHoursForAllLibraries() {
+            getHoursForAllZones() {
                 return hours;
             }
         }

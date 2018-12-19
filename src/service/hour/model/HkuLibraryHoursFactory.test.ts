@@ -8,7 +8,7 @@ import MomentConverter from "../MomentConverter";
 import SimpleHoursSplitter from "../SimpleHoursSplitter";
 import SimpleHourParser from "../SimpleHourParser";
 import Hours from "./Hours";
-import {AllLibrariesHours} from "./LibraryHours";
+import {AllZonesHours} from "./LibraryHours";
 
 describe("HkuLibraryHoursFactory", function () {
     it("should be able to convert from parsed html to LibraryHours", function () {
@@ -66,7 +66,7 @@ describe("HkuLibraryHoursFactory", function () {
         return new HoursConverter(splitter, parser, converter);
     }
 
-    function assertAllHours(hours: AllLibrariesHours) {
+    function assertAllHours(hours: AllZonesHours) {
         return {
             toEqual(expectedHours) {
                 return Object.keys(hours).forEach(key => assertHours(hours[key]).toEqual(expectedHours[key]));
