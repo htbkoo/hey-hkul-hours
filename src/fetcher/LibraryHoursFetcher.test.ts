@@ -9,14 +9,14 @@ import UrlAppender from "../service/UrlAppender";
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
         // given
-        const mockHtmlFetcher = newMockHtmlFetcher("https://lib.hku.hk/hours/daily/opening_hours_2018-12-13.html", htmlResponse);
+        const mockHtmlFetcher = newMockHtmlFetcher("https://lib.hku.hk/hours/daily/opening_hours_2018-12-23.html", htmlResponse);
         const parser = new HtmlParser();
         const appender = new UrlAppender("https://lib.hku.hk/hours/daily/opening_hours_", ".html");
 
         const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, parser, appender);
 
         // when
-        const date = moment("2018-12-13");
+        const date = moment("2018-12-23");
         const hours = await fetcher.retrieveHours(date);
 
         // then
