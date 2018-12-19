@@ -36,14 +36,14 @@ describe("HkuLibraryHoursFactory", function () {
                 {from: hour("10:00am"), to: hour("6:30pm")}
             ],
             "Library Corner (G/F) & Study Zone (Level 3)": [
-                {from: hour("10:00am"), to: nextDayHour("6:30pm")},
+                {from: hour("10:00am"), to: hour("6:30pm")},
                 {from: hour("7:00pm"), to: nextDayHour("7:30am")}
             ],
             "Dental Library": [
                 Hours.closed()
             ],
         };
-        assertAllHours(hours).toEqual(expectedHours);
+        assertAllHours(hours.getHoursForAllZones()).toEqual(expectedHours);
     });
 
     it("should throw Error if missing the key 'Library' to indicate the date", function () {

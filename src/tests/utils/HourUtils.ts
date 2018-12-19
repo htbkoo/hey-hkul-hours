@@ -1,7 +1,8 @@
-import {Moment} from "moment";
 import * as moment from "moment";
+import {Moment} from "moment";
 import Hours from "../../service/hour/model/Hours";
 import OpenHour from "../../service/hour/model/OpenHour";
+import Hour from "../../service/hour/model/Hour";
 
 export function hour(str: string): Moment {
     return moment(str, "h:ma");
@@ -14,12 +15,31 @@ export function nextDayHour(str: string): Moment {
 export function assertHours(hours: Hours) {
     return {
         toEqual(expectedHours: Array<any>) {
-            return expect(hours.asArray()).toEqual(asOpenHours(expectedHours));
+            return expect(hours.asArray()).toEqual(asHoursArray(expectedHours));
         }
     }
 }
 
+function asHoursArray(hours): Hour[] {
+    if (isClosedHour()) {
+        return Hours.closed().asArray();
+    } else {
+        return hours.map(asHour);
+    }
 
-function asOpenHours(hours) {
-    return hours.map(hour => new OpenHour(hour));
+    function isClosedHour(): boolean {
+        return hours[0] && hours[0].isClosed && hours[0].isClosed();
+    }
+}
+
+function asHour(obj) {
+    if (isOpenHourCompatible()) {
+        return new OpenHour(obj);
+    } else {
+        fail(`unable to parse the object: ${JSON.stringify(obj)}`);
+    }
+
+    function isOpenHourCompatible(): boolean {
+        return moment.isMoment(obj.from) && moment.isMoment(obj.to);
+    }
 }
