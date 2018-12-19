@@ -1,7 +1,8 @@
 import Hour from "./Hour";
 import OpenHour from "./OpenHour";
+import {errr} from "preconditions";
 
-const preconditions = require("preconditions").errr();
+const preconditions = errr();
 
 export default class Hours {
     private static readonly CLOSED = new Hours([]);
