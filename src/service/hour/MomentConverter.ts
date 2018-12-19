@@ -13,7 +13,7 @@ export default class MomentConverter {
         if (parseResult.isFollowingDay()) {
             return parseResult.asMoment();
         } else {
-            return moment(str, DEFAULT_TIME_FORMAT);
+            return MomentConverter.toMoment(str);
         }
     }
 
@@ -24,11 +24,15 @@ export default class MomentConverter {
                 return result !== null && isNonEmpty(this.getTime());
             },
             asMoment() {
-                return moment(this.getTime().trim(), DEFAULT_TIME_FORMAT).add(1, "d");
+                return MomentConverter.toMoment(this.getTime()).add(1, "d");
             },
             getTime(): string {
                 return result[1];
             }
         };
+    }
+
+    private static toMoment(str: string): Moment {
+        return moment(str.trim(), DEFAULT_TIME_FORMAT)
     }
 }
