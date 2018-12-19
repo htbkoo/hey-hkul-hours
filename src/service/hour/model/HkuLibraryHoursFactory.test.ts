@@ -1,13 +1,14 @@
 import {when} from 'jest-when';
 
 import HkuLibraryHoursFactory from "./HkuLibraryHoursFactory";
-import {hour, nextDayHour} from "../../../tests/utils/HourUtils";
+import {assertHours, hour, nextDayHour} from "../../../tests/utils/HourUtils";
 import * as moment from "moment";
 import HoursConverter from "../../HoursConverter";
 import MomentConverter from "../MomentConverter";
 import SimpleHoursSplitter from "../SimpleHoursSplitter";
 import SimpleHourParser from "../SimpleHourParser";
 import Hours from "./Hours";
+import {AllLibrariesHours} from "./LibraryHours";
 
 describe("HkuLibraryHoursFactory", function () {
     it("should be able to convert from parsed html to LibraryHours", function () {
@@ -27,7 +28,7 @@ describe("HkuLibraryHoursFactory", function () {
         // then
         expect(moment("2018-12-23").isSame(hours.getDate())).toEqual(true);
 
-        expect(hours.getHoursForAllLibraries()).toEqual({
+        const expectedHours = {
             "Main Library": [
                 {from: hour("10:00am"), to: hour("7:00pm")}
             ],
@@ -41,7 +42,8 @@ describe("HkuLibraryHoursFactory", function () {
             "Dental Library": [
                 Hours.closed()
             ],
-        })
+        };
+        assertAllHours(hours).toEqual(expectedHours);
     });
 
     it("should throw Error if missing the key 'Library' to indicate the date", function () {
@@ -62,5 +64,13 @@ describe("HkuLibraryHoursFactory", function () {
         const parser = new SimpleHourParser();
         const converter = new MomentConverter();
         return new HoursConverter(splitter, parser, converter);
+    }
+
+    function assertAllHours(hours: AllLibrariesHours) {
+        return {
+            toEqual(expectedHours) {
+                return Object.keys(hours).forEach(key => assertHours(hours[key]).toEqual(expectedHours[key]));
+            }
+        }
     }
 });
