@@ -3,9 +3,8 @@ import {when} from 'jest-when';
 import HoursConverter from "./HoursConverter";
 import SimpleHourParser from "./hour/SimpleHourParser";
 import SimpleHoursSplitter from "./hour/SimpleHoursSplitter";
-import {hour, nextDayHour} from "../tests/utils/HourUtils";
+import {assertHours, hour, nextDayHour} from "../tests/utils/HourUtils";
 import MomentConverter from "./hour/MomentConverter";
-import OpenHour from "./hour/model/OpenHour";
 
 describe("HoursConverter", function () {
     describe("openHours", function () {
@@ -68,11 +67,7 @@ describe("HoursConverter", function () {
                 const hours = converter.convert(input);
 
                 // then
-                expect(hours.asArray()).toEqual(asOpenHours(expectedHours));
-
-                function asOpenHours(hours) {
-                    return hours.map(hour => new OpenHour(hour));
-                }
+                assertHours(hours).toEqual(expectedHours);
             })
         );
     });
