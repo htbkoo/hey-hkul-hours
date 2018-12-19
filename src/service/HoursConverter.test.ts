@@ -29,6 +29,32 @@ describe("HoursConverter", function () {
                     {from: hour("9:00am"), to: hour("9:00pm")},
                 ]
             },
+            {
+                input: "8:30am - 6:00am of the following day",
+                expectedHours: [
+                    {from: hour("8:30am"), to: (hour("6:00am").add(1, "d"))}
+                ]
+            },
+            {
+                input: "8:30am of the following day - 6:00am of the following day",
+                expectedHours: [
+                    {from: hour("8:30am").add(1, "d"), to: (hour("6:00am").add(1, "d"))}
+                ]
+            },
+            {
+                input: "11:23am - 8:36pm, 9:00pm - 9:00am of the following day",
+                expectedHours: [
+                    {from: hour("11:23am"), to: hour("8:36pm")},
+                    {from: hour("9:00pm"), to: (hour("9:00am").add(1, "d"))},
+                ]
+            },
+            {
+                input: "10:00am - 6:30pm of the following day, 7:00pm - 7:30am of the following day",
+                expectedHours: [
+                    {from: hour("10:00am"), to: (hour("6:30pm").add(1, "d"))},
+                    {from: hour("7:00pm"), to: (hour("7:30am").add(1, "d"))},
+                ]
+            }
         ].forEach(({input, expectedHours}) =>
             it(`should convert "${input}" from string to hour`, async function () {
                 // given

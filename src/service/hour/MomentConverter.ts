@@ -23,7 +23,7 @@ export default class MomentConverter {
                     return result !== null && isNonEmpty(this.getTime());
                 },
                 asMoment() {
-                    return moment(this.getTime(), DEFAULT_TIME_FORMAT).add(1, "d");
+                    return moment(this.getTime().trim(), DEFAULT_TIME_FORMAT).add(1, "d");
                 },
                 getTime(): string {
                     return result[1];
