@@ -21,7 +21,10 @@ export default class HoursConverter {
         if (isClosed()) {
             return Hours.closed();
         } else {
-
+            const strings = this._splitter.split(str);
+            const hourInStrings = strings.map(session => this._parser.parse(session));
+            const hours = hourInStrings.map(hourInString => hourInString.asHour(this._converter));
+            return Hours.openHours(hours)
         }
 
         function isClosed() {
