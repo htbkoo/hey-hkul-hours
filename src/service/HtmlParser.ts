@@ -1,8 +1,5 @@
 import {JSDOM} from "jsdom";
-
-type RawStringsMap = {
-    [libraryName: string]: string
-}
+import {RawStringsMap} from "./validation/model/RawStringsMap";
 
 export default class HtmlParser {
     parseHtml(html: string): RawStringsMap {
