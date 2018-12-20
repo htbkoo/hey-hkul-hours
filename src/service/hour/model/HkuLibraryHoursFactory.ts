@@ -25,9 +25,21 @@ export default class HkuLibraryHoursFactory {
     public createLibraryHours(stringsMap: InputMapType): LibraryHours {
         preconditions.shouldBeDefined(stringsMap[KEY_FOR_DATE], "Missing mapping of \"%s\" for date from the input", KEY_FOR_DATE).test();
 
-        const date = this.getDate(stringsMap);
-        const hours = this.getHours(stringsMap);
-        return this.hkuLibraryHours(date, hours);
+        return this.hkuLibraryHours(stringsMap);
+    }
+
+    private hkuLibraryHours(map: InputMapType): LibraryHours {
+        const date = this.getDate(map);
+        const hours = this.getHours(map);
+
+        return {
+            getDate() {
+                return date;
+            },
+            getHoursForAllZones() {
+                return hours;
+            }
+        }
     }
 
     private getDate(map: InputMapType): Moment {
@@ -41,16 +53,5 @@ export default class HkuLibraryHoursFactory {
             obj[key] = this._converter.convert(hours[key]);
             return obj;
         }, {});
-    }
-
-    private hkuLibraryHours(date, hours): LibraryHours {
-        return {
-            getDate() {
-                return date;
-            },
-            getHoursForAllZones() {
-                return hours;
-            }
-        }
     }
 }
