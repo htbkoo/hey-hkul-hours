@@ -23,7 +23,7 @@ export default class HkuLibraryHoursFactory {
     }
 
     public createLibraryHours(stringsMap: InputMapType): LibraryHours {
-        preconditions.shouldBeDefined(stringsMap[KEY_FOR_DATE], "Missing mapping of \"%s\" for date from the input", KEY_FOR_DATE).test();
+        preconditions.shouldBeDefined(stringsMap[KEY_FOR_DATE], 'Missing mapping of "%s" for date from the input', KEY_FOR_DATE).test();
 
         return this.hkuLibraryHours(stringsMap);
     }
