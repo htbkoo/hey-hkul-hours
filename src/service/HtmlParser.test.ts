@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import HtmlParser from "./HtmlParser";
 
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";

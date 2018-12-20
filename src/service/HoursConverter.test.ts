@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import HoursConverter from "./HoursConverter";
 import SimpleHourParser from "./hour/SimpleHourParser";
 import SimpleHoursSplitter from "./hour/SimpleHoursSplitter";

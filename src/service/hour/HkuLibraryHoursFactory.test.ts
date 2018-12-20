@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import HkuLibraryHoursFactory from "./HkuLibraryHoursFactory";
 import {assertHours, hour, nextDayHour} from "../../tests/utils/HourUtils";
 import * as moment from "moment";

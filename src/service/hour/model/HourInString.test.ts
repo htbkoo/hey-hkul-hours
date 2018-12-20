@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import HourInString from "./HourInString";
 import Hour from "./Hour";
 import MomentConverter from "../MomentConverter";
