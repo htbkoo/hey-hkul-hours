@@ -66,6 +66,7 @@ describe("HkuLibraryHoursFactory", function () {
         return new HoursConverter(splitter, parser, converter);
     }
 
+    // TODO: refactor / update test scope / use mocking to reduce duplication
     function assertAllHours(hours: AllZonesHours) {
         return {
             toEqual(expectedHours) {

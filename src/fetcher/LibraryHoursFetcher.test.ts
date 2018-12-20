@@ -5,40 +5,88 @@ import LibraryHoursFetcher from "./LibraryHoursFetcher";
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";
 import HtmlParser from "../service/HtmlParser";
 import UrlAppender from "../service/UrlAppender";
+import SimpleHoursSplitter from "../service/hour/SimpleHoursSplitter";
+import SimpleHourParser from "../service/hour/SimpleHourParser";
+import MomentConverter from "../service/hour/MomentConverter";
+import HoursConverter from "../service/HoursConverter";
+import HkuLibraryHoursFactory from "../service/hour/model/HkuLibraryHoursFactory";
+import {assertHours, hour, nextDayHour} from "../tests/utils/HourUtils";
+import Hours from "../service/hour/model/Hours";
+import {AllZonesHours} from "../service/hour/model/LibraryHours";
 
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
         // given
         const mockHtmlFetcher = newMockHtmlFetcher("https://lib.hku.hk/hours/daily/opening_hours_2018-12-23.html", htmlResponse);
-        const parser = new HtmlParser();
+        const htmlParser = new HtmlParser();
         const appender = new UrlAppender("https://lib.hku.hk/hours/daily/opening_hours_", ".html");
 
-        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, parser, appender);
+        const splitter = new SimpleHoursSplitter();
+        const hourParser = new SimpleHourParser();
+        const momentConverter = new MomentConverter();
+        const converter = new HoursConverter(splitter, hourParser, momentConverter);
+
+        const factory = new HkuLibraryHoursFactory(converter);
+
+        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, htmlParser, appender, factory);
 
         // when
         const date = moment("2018-12-23");
         const hours = await fetcher.retrieveHours(date);
 
         // then
-        expect(hours).toEqual({
-            "Library": "13 Dec 2018 Thursday",
-            "Main Library": "8:30am - 6:00am of the following day",
-            "Collaboration Zone (Level 3)": "8:30am - 10:30pm",
-            "Library Corner (G/F) & Study Zone (Level 3)": "8:30am - 6:00am of the following day",
-            "AV Collection": "8:30am - 11:00pm",
-            "Fung Ping Shan Library": "8:30am - 6:00am of the following day",
-            "Special Collections": "9:00am - 10:00pm",
-            "Dental Library": "8:30am - 10:00pm",
-            "Tin Ka Ping Education Library": "9:00am - 9:00pm",
-            "Lui Che Woo Law Library": "9:00am - 10:00pm",
-            "Music Library": "9:00am - 8:00pm",
-            "Yu Chun Keung Medical Library": "8:15am - 11:00pm",
-        });
+        expect(date.isSame(hours.getDate())).toEqual(true);
+
+        const expectedHours = {
+            "Main Library": [
+                {from: hour("10:00am"), to: hour("7:00pm")}
+            ],
+            "Collaboration Zone (Level 3)": [
+                {from: hour("10:00am"), to: hour("6:30pm")}
+            ],
+            "Library Corner (G/F) & Study Zone (Level 3)": [
+                {from: hour("10:00am"), to: hour("6:30pm")},
+                {from: hour("7:00pm"), to: nextDayHour("7:30am")}
+            ],
+            "AV Collection": [
+                {from: hour("10:00am"), to: hour("7:00pm")}
+            ],
+            "Fung Ping Shan Library": [
+                {from: hour("10:00am"), to: hour("7:00pm")}
+            ],
+            "Special Collections": [
+                {from: hour("10:00am"), to: hour("7:00pm")}
+            ],
+            "Dental Library": [
+                Hours.closed()
+            ],
+            "Tin Ka Ping Education Library": [
+                Hours.closed()
+            ],
+            "Lui Che Woo Law Library": [
+                {from: hour("12:00pm"), to: hour("4:00pm")}
+            ],
+            "Music Library": [
+                Hours.closed()
+            ],
+            "Yu Chun Keung Medical Library": [
+                {from: hour("10:00am"), to: hour("5:00pm")}
+            ],
+        };
+        assertAllHours(hours.getHoursForAllZones()).toEqual(expectedHours);
     });
 
     function newMockHtmlFetcher(url: string, response: any) {
         const mockFetcher = {fetchHtml: jest.fn()};
         when(mockFetcher.fetchHtml).calledWith(url).mockReturnValue(response);
         return mockFetcher;
+    }
+
+    function assertAllHours(hours: AllZonesHours) {
+        return {
+            toEqual(expectedHours) {
+                return Object.keys(hours).forEach(key => assertHours(hours[key]).toEqual(expectedHours[key]));
+            }
+        }
     }
 });
