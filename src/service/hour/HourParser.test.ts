@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import RegexHourParser from "./RegexHourParser";
 import HourParser from "./HourParser";
 import SimpleHourParser from "./SimpleHourParser";

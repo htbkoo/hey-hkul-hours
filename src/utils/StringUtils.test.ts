@@ -1,4 +1,3 @@
-import {when} from 'jest-when';
 import {areEqualIgnoringCase, isNonEmpty} from "./StringUtils";
 
 describe("StringUtils.ts", function () {

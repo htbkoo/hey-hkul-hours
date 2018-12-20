@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import HoursSplitter from "./HoursSplitter";
 import SimpleHoursSplitter from "./SimpleHoursSplitter";
 

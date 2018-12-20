@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import Hours from "./Hours";
 import OpenHour from "./OpenHour";
 import {hour} from "../../../tests/utils/HourUtils";

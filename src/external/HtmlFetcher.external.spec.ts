@@ -3,7 +3,7 @@ import "dotenv/config";
 import HtmlFetcher from "./HtmlFetcher";
 import expectedText from "../tests/resources/external/expectedHtmlFetchResponse";
 
-const DATE_WITH_EXPECTED_RESPONSE = "2018-12-13";
+const DATE_WITH_EXPECTED_RESPONSE = "2018-12-23";
 
 describe("HtmlFetcher (external tests)", function () {
     it(`should fetch from external html for fixed date "${DATE_WITH_EXPECTED_RESPONSE} and retrieve expected response"`, function () {

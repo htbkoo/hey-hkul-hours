@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import HtmlParser from "./HtmlParser";
 
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";
@@ -14,18 +12,18 @@ describe("HtmlParser", function () {
 
         // then
         expect(mapping).toEqual({
-            "Library": "13 Dec 2018 Thursday",
-            "Main Library": "8:30am - 6:00am of the following day",
-            "Collaboration Zone (Level 3)": "8:30am - 10:30pm",
-            "Library Corner (G/F) & Study Zone (Level 3)": "8:30am - 6:00am of the following day",
-            "AV Collection": "8:30am - 11:00pm",
-            "Fung Ping Shan Library": "8:30am - 6:00am of the following day",
-            "Special Collections": "9:00am - 10:00pm",
-            "Dental Library": "8:30am - 10:00pm",
-            "Tin Ka Ping Education Library": "9:00am - 9:00pm",
-            "Lui Che Woo Law Library": "9:00am - 10:00pm",
-            "Music Library": "9:00am - 8:00pm",
-            "Yu Chun Keung Medical Library": "8:15am - 11:00pm",
+            "Library": "23 Dec 2018 Sunday",
+            "Main Library": "10:00am - 7:00pm",
+            "Collaboration Zone (Level 3)": "10:00am - 6:30pm",
+            "Library Corner (G/F) & Study Zone (Level 3)": "10:00am - 6:30pm, 7:00pm - 7:30am of the following day",
+            "AV Collection": "10:00am - 7:00pm",
+            "Fung Ping Shan Library": "10:00am - 7:00pm",
+            "Special Collections": "10:00am - 7:00pm",
+            "Dental Library": "Closed",
+            "Tin Ka Ping Education Library": "Closed",
+            "Lui Che Woo Law Library": "12:00pm - 4:00pm",
+            "Music Library": "Closed",
+            "Yu Chun Keung Medical Library": "10:00am - 5:00pm",
         });
     });
 });

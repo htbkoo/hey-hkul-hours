@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import RegexHourParser from "./RegexHourParser";
 import HourInString from "./model/HourInString";
 

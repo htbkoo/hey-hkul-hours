@@ -1,5 +1,3 @@
-import {when} from 'jest-when';
-
 import UrlAppender from "./UrlAppender";
 
 import * as moment from "moment";
