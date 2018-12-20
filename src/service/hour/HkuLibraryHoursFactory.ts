@@ -2,8 +2,8 @@ import * as moment from "moment";
 import {Moment} from "moment";
 import {errr} from "preconditions";
 
-import LibraryHours, {ReadOnlyAllZonesHours} from "./LibraryHours";
-import HoursConverter from "../../HoursConverter";
+import LibraryHours, {ReadOnlyAllZonesHours} from "./model/LibraryHours";
+import HoursConverter from "../HoursConverter";
 
 const KEY_FOR_DATE = "Library";
 const DEFAULT_DATE_FORMAT = "DD MMM YYYY dddd";

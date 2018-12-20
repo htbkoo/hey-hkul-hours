@@ -1,14 +1,14 @@
 import {when} from 'jest-when';
 
 import HkuLibraryHoursFactory from "./HkuLibraryHoursFactory";
-import {assertHours, hour, nextDayHour} from "../../../tests/utils/HourUtils";
+import {assertHours, hour, nextDayHour} from "../../tests/utils/HourUtils";
 import * as moment from "moment";
-import HoursConverter from "../../HoursConverter";
-import MomentConverter from "../MomentConverter";
-import SimpleHoursSplitter from "../SimpleHoursSplitter";
-import SimpleHourParser from "../SimpleHourParser";
-import Hours from "./Hours";
-import {AllZonesHours} from "./LibraryHours";
+import HoursConverter from "../HoursConverter";
+import MomentConverter from "./MomentConverter";
+import SimpleHoursSplitter from "./SimpleHoursSplitter";
+import SimpleHourParser from "./SimpleHourParser";
+import Hours from "./model/Hours";
+import {AllZonesHours} from "./model/LibraryHours";
 
 describe("HkuLibraryHoursFactory", function () {
     it("should be able to convert from parsed html to LibraryHours", function () {

@@ -9,7 +9,7 @@ import SimpleHoursSplitter from "../service/hour/SimpleHoursSplitter";
 import SimpleHourParser from "../service/hour/SimpleHourParser";
 import MomentConverter from "../service/hour/MomentConverter";
 import HoursConverter from "../service/HoursConverter";
-import HkuLibraryHoursFactory from "../service/hour/model/HkuLibraryHoursFactory";
+import HkuLibraryHoursFactory from "../service/hour/HkuLibraryHoursFactory";
 import {assertHours, hour, nextDayHour} from "../tests/utils/HourUtils";
 import Hours from "../service/hour/model/Hours";
 import {AllZonesHours} from "../service/hour/model/LibraryHours";

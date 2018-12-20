@@ -3,7 +3,7 @@ import {Moment} from "moment";
 import HtmlFetcher from "../external/HtmlFetcher";
 import HtmlParser from "../service/HtmlParser";
 import UrlAppender from "../service/UrlAppender";
-import HkuLibraryHoursFactory from "../service/hour/model/HkuLibraryHoursFactory";
+import HkuLibraryHoursFactory from "../service/hour/HkuLibraryHoursFactory";
 
 export default class LibraryHoursFetcher {
     private readonly _htmlFetcher: HtmlFetcher;
