@@ -55,7 +55,7 @@ describe("HkuLibraryHoursFactory", function () {
 
         // then
         expect(() => factory.createLibraryHours(stringsMap as any)).toThrowError(
-            ""
+            'Missing mapping of "Library" for date from the input'
         );
     });
 
