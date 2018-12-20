@@ -1,7 +1,11 @@
 import {JSDOM} from "jsdom";
 
+type RawStringsMap = {
+    [libraryName: string]: string
+}
+
 export default class HtmlParser {
-    parseHtml(html) {
+    parseHtml(html: string): RawStringsMap {
         return this.getAllRows(html)
             .map(this.rowToTableCells)
             .map(this.tableCellsToStrings)
