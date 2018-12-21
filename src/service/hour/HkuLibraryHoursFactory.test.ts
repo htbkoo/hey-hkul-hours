@@ -11,17 +11,23 @@ import {AllZonesHours} from "./model/LibraryHours";
 describe("HkuLibraryHoursFactory", function () {
     it("should be able to convert from parsed html to LibraryHours", function () {
         // given
-        const stringsMap = {
-            "Library": "23 Dec 2018 Sunday",
-            "Main Library": "10:00am - 7:00pm",
-            "Collaboration Zone (Level 3)": "10:00am - 6:30pm",
-            "Library Corner (G/F) & Study Zone (Level 3)": "10:00am - 6:30pm, 7:00pm - 7:30am of the following day",
-            "Dental Library": "Closed",
+        const map = {
+            getDate() {
+                return "23 Dec 2018 Sunday";
+            },
+            getHoursMapping() {
+                return {
+                    "Main Library": "10:00am - 7:00pm",
+                    "Collaboration Zone (Level 3)": "10:00am - 6:30pm",
+                    "Library Corner (G/F) & Study Zone (Level 3)": "10:00am - 6:30pm, 7:00pm - 7:30am of the following day",
+                    "Dental Library": "Closed",
+                }
+            }
         };
 
         // when
         const factory = new HkuLibraryHoursFactory(getConverter());
-        const hours = factory.createLibraryHours(stringsMap);
+        const hours = factory.createLibraryHours(map);
 
         // then
         expect(moment("2018-12-23").isSame(hours.getDate())).toEqual(true);
@@ -42,19 +48,6 @@ describe("HkuLibraryHoursFactory", function () {
             ],
         };
         assertAllHours(hours.getHoursForAllZones()).toEqual(expectedHours);
-    });
-
-    it("should throw Error if missing the key 'Library' to indicate the date", function () {
-        // given
-        const stringsMap = {};
-
-        // when
-        const factory = new HkuLibraryHoursFactory(getConverter());
-
-        // then
-        expect(() => factory.createLibraryHours(stringsMap as any)).toThrowError(
-            'Missing mapping of "Library" for date from the input'
-        );
     });
 
     function getConverter() {
