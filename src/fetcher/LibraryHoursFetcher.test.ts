@@ -13,6 +13,7 @@ import HkuLibraryHoursFactory from "../service/hour/HkuLibraryHoursFactory";
 import {assertHours, hour, nextDayHour} from "../tests/utils/HourUtils";
 import Hours from "../service/hour/model/Hours";
 import {AllZonesHours} from "../service/hour/model/LibraryHours";
+import ParsedMapValidator from "../service/ParsedMapValidator";
 
 describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
@@ -26,12 +27,15 @@ describe("LibraryHoursFetcher", function () {
         const momentConverter = new MomentConverter();
         const converter = new HoursConverter(splitter, hourParser, momentConverter);
 
+        const validator = new ParsedMapValidator();
+
         const factory = new HkuLibraryHoursFactory(converter);
 
-        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, htmlParser, appender, factory);
+        const date = moment("2018-12-23");
 
         // when
-        const date = moment("2018-12-23");
+        const fetcher = new LibraryHoursFetcher(mockHtmlFetcher as any, htmlParser, appender, validator, factory);
+
         const hours = await fetcher.retrieveHours(date);
 
         // then
