@@ -15,12 +15,8 @@ export default class HkuLibraryHoursFactory {
     }
 
     public createLibraryHours(stringsMap: ValidatedStringsMap): LibraryHours {
-        return this.hkuLibraryHours(stringsMap);
-    }
-
-    private hkuLibraryHours(map: ValidatedStringsMap): LibraryHours {
-        const date = this.getDate(map);
-        const hours = this.getHours(map);
+        const date = this.getDate(stringsMap);
+        const hours = this.getHours(stringsMap);
 
         return {
             getDate() {
