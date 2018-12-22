@@ -10,9 +10,8 @@ import SimpleHourParser from "../service/hour/SimpleHourParser";
 import MomentConverter from "../service/hour/MomentConverter";
 import HoursConverter from "../service/HoursConverter";
 import HkuLibraryHoursFactory from "../service/hour/HkuLibraryHoursFactory";
-import {assertHours, hour, nextDayHour} from "../tests/utils/HourUtils";
+import {assertAllHours, hour, nextDayHour} from "../tests/utils/HourUtils";
 import Hours from "../service/hour/model/Hours";
-import {AllZonesHours} from "../service/hour/model/LibraryHours";
 import ParsedMapValidator from "../service/ParsedMapValidator";
 
 describe("LibraryHoursFetcher", function () {
@@ -84,13 +83,5 @@ describe("LibraryHoursFetcher", function () {
         const mockFetcher = {fetchHtml: jest.fn()};
         when(mockFetcher.fetchHtml).calledWith(url).mockReturnValue(response);
         return mockFetcher;
-    }
-
-    function assertAllHours(hours: AllZonesHours) {
-        return {
-            toEqual(expectedHours) {
-                return Object.keys(hours).forEach(key => assertHours(hours[key]).toEqual(expectedHours[key]));
-            }
-        }
     }
 });
