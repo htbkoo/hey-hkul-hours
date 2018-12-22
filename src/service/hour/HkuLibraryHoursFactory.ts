@@ -34,8 +34,7 @@ export default class HkuLibraryHoursFactory {
 
     private getHours(map: ValidatedStringsMap) {
         const hours = map.getHoursMapping();
-        // return Object.entries(hours).reduce(this.convertHour.bind(this), {});
-        return Object.entries(hours).reduce((obj, entry) => this.convertHour(obj, entry), {});
+        return Object.entries(hours).reduce(this.convertHour.bind(this), {});
     }
 
     private convertHour(obj, [key, value]) {
