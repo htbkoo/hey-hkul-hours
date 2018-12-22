@@ -1,12 +1,12 @@
-import HkuLibraryHoursFactory from "./HkuLibraryHoursFactory";
-import {assertHours, hour, nextDayHour} from "../../tests/utils/HourUtils";
 import * as moment from "moment";
+
+import HkuLibraryHoursFactory from "./HkuLibraryHoursFactory";
+import {assertAllHours, hour, nextDayHour} from "../../tests/utils/HourUtils";
 import HoursConverter from "../HoursConverter";
 import MomentConverter from "./MomentConverter";
 import SimpleHoursSplitter from "./SimpleHoursSplitter";
 import SimpleHourParser from "./SimpleHourParser";
 import Hours from "./model/Hours";
-import {AllZonesHours} from "./model/LibraryHours";
 
 describe("HkuLibraryHoursFactory", function () {
     it("should be able to convert from parsed html to LibraryHours", function () {
@@ -55,14 +55,5 @@ describe("HkuLibraryHoursFactory", function () {
         const parser = new SimpleHourParser();
         const converter = new MomentConverter();
         return new HoursConverter(splitter, parser, converter);
-    }
-
-    // TODO: refactor / update test scope / use mocking to reduce duplication
-    function assertAllHours(hours: AllZonesHours) {
-        return {
-            toEqual(expectedHours) {
-                return Object.keys(hours).forEach(key => assertHours(hours[key]).toEqual(expectedHours[key]));
-            }
-        }
     }
 });

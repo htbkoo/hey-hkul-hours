@@ -18,17 +18,21 @@ export default class HoursConverter {
     }
 
     convert(str: string): Hours {
-        if (isClosed()) {
+        if (isClosed(str)) {
             return Hours.closed();
         } else {
-            const strings = this._splitter.split(str);
-            const hourInStrings = strings.map(session => this._parser.parse(session));
-            const hours = hourInStrings.map(hourInString => hourInString.asHour(this._converter));
-            return Hours.openHours(hours)
-        }
-
-        function isClosed() {
-            return areEqualIgnoringCase(CLOSED, str);
+            return this.createOpenHours(str);
         }
     }
+
+    private createOpenHours(str: string) {
+        const strings = this._splitter.split(str);
+        const hourInStrings = strings.map(session => this._parser.parse(session));
+        const hours = hourInStrings.map(hourInString => hourInString.asHour(this._converter));
+        return Hours.openHours(hours)
+    }
+}
+
+function isClosed(str: string) {
+    return areEqualIgnoringCase(CLOSED, str);
 }
