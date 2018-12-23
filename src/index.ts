@@ -27,7 +27,7 @@ class HkuLibraryHoursFetcher extends LibraryHoursFetcher {
     }
 }
 
-module.exports = {
+export {
     HkuLibraryHoursFetcher,
 
     HtmlFetcher,
