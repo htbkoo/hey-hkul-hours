@@ -169,3 +169,8 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+## Personal --- start
+dist/
+src/**/*.js
+## Personal --- end
