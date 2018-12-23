@@ -1,6 +1,6 @@
 {
   "name": "hey-hkul-hours",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An app to quickly retrieve the opening hours and calendar for HKU Library ",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "dotenv": "^6.2.0",
     "jest": "^23.6.0",
     "jest-when": "^2.1.0",
+    "rimraf": "^2.6.2",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
   },
