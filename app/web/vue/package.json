@@ -1,0 +1,42 @@
+{
+  "name": "hey-hkul-hours-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Web client for hey-hkul-hours, an app to quickly retrieve the opening hours and calendar for HKU Library",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htbkoo/hey-hkul-hours.git"
+  },
+  "author": "htbkoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/htbkoo/hey-hkul-hours/issues"
+  },
+  "homepage": "https://github.com/htbkoo/hey-hkul-hours#readme",
+  "dependencies": {
+    "register-service-worker": "^1.5.2",
+    "vue": "^2.5.17",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.0.0",
+    "hey-hkul-hours": "file:../../../"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.1.4",
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-pwa": "^3.2.0",
+    "@vue/cli-plugin-typescript": "^3.2.0",
+    "@vue/cli-plugin-unit-jest": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "ts-jest": "^23.0.0",
+    "typescript": "^3.0.0",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
