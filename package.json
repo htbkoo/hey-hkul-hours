@@ -1,6 +1,6 @@
 {
   "name": "hey-hkul-hours",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An app to quickly retrieve the opening hours and calendar for HKU Library ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
