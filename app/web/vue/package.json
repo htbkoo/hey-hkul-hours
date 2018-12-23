@@ -20,11 +20,12 @@
   },
   "homepage": "https://github.com/htbkoo/hey-hkul-hours#readme",
   "dependencies": {
+    "hey-hkul-hours": "file:../../../",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
-    "vue-property-decorator": "^7.0.0",
-    "hey-hkul-hours": "file:../../../"
+    "vue-material": "^1.0.0-beta-10.2",
+    "vue-property-decorator": "^7.0.0"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
