@@ -2,12 +2,16 @@
   "name": "hey-hkul-hours",
   "version": "1.0.0",
   "description": "An app to quickly retrieve the opening hours and calendar for HKU Library ",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "test-unit": "jest --testPathPattern=\".*\\.test\\.tsx?\"",
     "test:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js",
-    "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js --testPathPattern=\".*\\.test\\.tsx?\""
+    "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js --testPathPattern=\".*\\.test\\.tsx?\"",
+    "build": "tsc -p tsconfig.prod.dist.json",
+    "clean": "rimraf ./dist",
+    "rebuild": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
