@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Hours title="HKU Libraries Hours"/>
+        <Hours title="Libraries Hours"/>
     </div>
 </template>
 
