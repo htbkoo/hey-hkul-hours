@@ -3,12 +3,10 @@
         <md-card class="md-card-example">
             <md-card-media-cover md-text-scrim>
                 <md-card-media>
-                    <img src="../assets/hkul/wikipedia/hkul_banner.png" alt="HKU Library">
+                    <img :src="require(`@/assets/${banner.src}`)" :alt="banner.alt">
                 </md-card-media>
 
                 <md-card-area md-inset>
-                    <!--https://upload.wikimedia.org/wikipedia/commons/e/ed/HKU_%E9%A6%99%E6%B8%AF%E5%A4%A7%E5%AD%B8_Sun_Yat-sen_Place_%E4%B8%AD%E5%B1%B1%E5%BB%A3%E5%A0%B4_Main_Library_facade_March-2012_Ip4.jpg-->
-
                     <md-card-header>
                         <h2 class="md-title">{{libraryName}} Hours</h2>
                         <div class="md-subhead">
@@ -45,8 +43,14 @@
 <script lang="ts">
     import {Component, Prop, Vue} from 'vue-property-decorator';
 
+    type BannerProps = {
+        src: string,
+        alt: string
+    }
+
     @Component
     export default class Hours extends Vue {
+        @Prop() private banner!: BannerProps;
         @Prop() private libraryName!: string;
     }
 </script>
