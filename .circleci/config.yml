@@ -17,7 +17,7 @@ jobs: # a collection of steps
           command: npm install
       - run:
           name: install-npm-for-web-client
-          command: 'cd app/web/vue && npm install'
+          command: cd app/web/vue && npm install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
