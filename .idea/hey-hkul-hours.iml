@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tests/utils" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/app/web/vue/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/app/web/vue/unused" />
       <excludeFolder url="file://$MODULE_DIR$/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
     </content>
