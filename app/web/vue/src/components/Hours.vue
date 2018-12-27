@@ -99,8 +99,11 @@
     }
 
     .md-app {
-        max-height: 400px;
         border: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    .page-content {
+        min-height: 100vh;
     }
 
     .md-drawer {
