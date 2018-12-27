@@ -14,10 +14,7 @@ jobs: # a collection of steps
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
-          command: npm install
-      - run:
-          name: install-npm-for-web-client
-          command: cd app/web/vue && npm install
+          command: npm install && cd app/web/vue && npm install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
