@@ -15,6 +15,9 @@ jobs: # a collection of steps
       - run:
           name: install-npm-wee
           command: npm install
+      - run:
+          name: install-npm-for-web-client
+          command: 'cd app/web/vue && npm install'
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -33,3 +36,4 @@ jobs: # a collection of steps
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: reports/junit
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+
