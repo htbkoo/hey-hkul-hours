@@ -2,8 +2,6 @@
   "extends": "./tsconfig.prod.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "target": "es5",
-    "module": "commonjs",
     "declaration": true
   },
   "include": [
