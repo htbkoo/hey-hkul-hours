@@ -11,7 +11,8 @@
     "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js --testPathPattern=\".*\\.test\\.tsx?\"",
     "build": "tsc -p tsconfig.prod.dist.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run clean && npm run build"
+    "rebuild": "npm run clean && npm run build",
+    "postinstall": "npm run rebuild"
   },
   "repository": {
     "type": "git",
