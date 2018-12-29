@@ -4,6 +4,10 @@
   "description": "An app to quickly retrieve the opening hours and calendar for HKU Library ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "lib/*.js",
+    "lib/*.d.ts"
+  ],
   "scripts": {
     "test": "jest",
     "test-unit": "jest --testPathPattern=\".*\\.test\\.tsx?\"",
@@ -11,8 +15,7 @@
     "test-unit:circleci": "jest --ci --coverage --reporters=default --reporters=jest-junit --config ./jest.circleci.config.js --testPathPattern=\".*\\.test\\.tsx?\"",
     "build": "tsc -p tsconfig.prod.dist.json",
     "clean": "rimraf ./dist",
-    "rebuild": "npm run clean && npm run build",
-    "postinstall": "npm run rebuild"
+    "rebuild": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
