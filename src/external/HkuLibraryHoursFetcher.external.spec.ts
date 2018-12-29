@@ -4,7 +4,6 @@ import * as moment from "moment";
 import HkuLibraryHoursFetcher from "../fetcher/HkuLibraryHoursFetcher";
 import {assertAllHours, hour, nextDayHour} from "../tests/utils/HourUtils";
 import Hours from "../service/hour/model/Hours";
-import HtmlFetcher from "../external/HtmlFetcher";
 
 describe("HkuLibraryHoursFetcher (external tests)", function () {
     it("should fetch library hours using default configuration", async function () {
