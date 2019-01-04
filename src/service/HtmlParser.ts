@@ -6,10 +6,19 @@ export default class HtmlParser {
     parseHtml(html: string): RawStringsMap {
         const $ = cheerio.load(html);
 
-        return Array.from($("tr").map((i, tr) => $(tr).find("td").map((i, td) => $(td).text())))
-            .reduce((obj, node) => {
-                obj[node[0]] = node[1];
-                return obj;
-            }, {});
+        const allRows = $("tr");
+        const libraryAndHourPairs = allRows.map(fromRowToPairs);
+
+        return Array.from(libraryAndHourPairs).reduce(fromCheerioElementToMap, {});
+
+        function fromRowToPairs(i, tr) {
+            const allCells = $(tr).find("td");
+            return allCells.map((i, td) => $(td).text())
+        }
+
+        function fromCheerioElementToMap(obj, element): RawStringsMap {
+            obj[element[0]] = element[1];
+            return obj;
+        }
     }
 }
