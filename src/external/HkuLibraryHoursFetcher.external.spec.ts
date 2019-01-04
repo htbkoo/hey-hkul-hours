@@ -1,3 +1,5 @@
+import "../tests/utils/fetchPolyfill";
+
 import {when} from 'jest-when';
 import * as moment from "moment";
 
