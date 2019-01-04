@@ -1,4 +1,3 @@
-import {JSDOM} from "jsdom";
 import {Moment} from "moment";
 
 const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
