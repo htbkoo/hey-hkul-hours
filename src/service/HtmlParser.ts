@@ -13,7 +13,7 @@ export default class HtmlParser {
 
         function fromRowToPairs(i, tr) {
             const allCells = $(tr).find("td");
-            return allCells.map((i, td) => $(td).text())
+            return allCells.map((i, td) => $(td).text());
         }
 
         function fromCheerioElementToMap(obj, element): RawStringsMap {
