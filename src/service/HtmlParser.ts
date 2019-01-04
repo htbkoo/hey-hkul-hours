@@ -1,36 +1,24 @@
-import {JSDOM} from "jsdom";
+import * as cheerio from "cheerio";
+
 import {RawStringsMap} from "./validation/model/RawStringsMap";
 
 export default class HtmlParser {
     parseHtml(html: string): RawStringsMap {
-        return this.getAllRows(html)
-            .map(this.rowToTableCells)
-            .map(this.tableCellsToStrings)
-            .reduce(this.toRawStringsMap, {});
-    }
+        const $ = cheerio.load(html);
 
-    private getAllRows(html) {
-        const dom = new JSDOM(html);
-        return Array.from(dom.window.document.querySelectorAll("tr")); // reference: https://stackoverflow.com/a/25657154
-    }
+        const allRows = $("tr");
+        const libraryAndHourPairs = allRows.map(fromRowToPairs);
 
-    private rowToTableCells(row) {
-        return Array.from((row as any).querySelectorAll("td"))
-    }
+        return Array.from(libraryAndHourPairs).reduce(fromCheerioElementToMap, {});
 
-    private tableCellsToStrings(tableCells) {
-        return {
-            libraryName: cellAsString(tableCells[0]),
-            hour: cellAsString(tableCells[1]),
-        };
-
-        function cellAsString(cell: any) {
-            return cell.textContent;
+        function fromRowToPairs(i, tr) {
+            const allCells = $(tr).find("td");
+            return allCells.map((i, td) => $(td).text());
         }
-    }
 
-    private toRawStringsMap(obj, {libraryName, hour}) {
-        obj[libraryName as any] = hour;
-        return obj;
+        function fromCheerioElementToMap(obj, element): RawStringsMap {
+            obj[element[0]] = element[1];
+            return obj;
+        }
     }
 }
