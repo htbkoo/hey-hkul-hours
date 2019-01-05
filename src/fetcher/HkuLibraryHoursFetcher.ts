@@ -1,5 +1,6 @@
 import HtmlFetcher from "../external/HtmlFetcher";
 import HtmlParser from "../service/HtmlParser";
+import CheerioHtmlParser from "../service/CheerioHtmlParser";
 import UrlAppender from "../service/UrlAppender";
 import HkuLibraryHoursFactory from "../service/hour/HkuLibraryHoursFactory";
 import ParsedMapValidator from "../service/ParsedMapValidator";
@@ -9,9 +10,15 @@ import SimpleHoursSplitter from "../service/hour/SimpleHoursSplitter";
 import SimpleHourParser from "../service/hour/SimpleHourParser";
 import MomentConverter from "../service/hour/MomentConverter";
 
-const DEFAULT_DEPENDENCIES = {
+const DEFAULT_DEPENDENCIES: {
+    htmlFetcher: HtmlFetcher,
+    htmlParser: HtmlParser,
+    urlAppender: UrlAppender,
+    parsedMapValidator: ParsedMapValidator,
+    libraryHoursFactory: HkuLibraryHoursFactory,
+} = {
     htmlFetcher: new HtmlFetcher(),
-    htmlParser: new HtmlParser(),
+    htmlParser: new CheerioHtmlParser(),
     urlAppender: new UrlAppender("https://lib.hku.hk/hours/daily/opening_hours_", ".html"),
     parsedMapValidator: new ParsedMapValidator(),
     libraryHoursFactory: new HkuLibraryHoursFactory(

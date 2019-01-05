@@ -3,7 +3,7 @@ import * as moment from "moment";
 
 import LibraryHoursFetcher from "./LibraryHoursFetcher";
 import htmlResponse from "../tests/resources/external/expectedHtmlFetchResponse";
-import HtmlParser from "../service/HtmlParser";
+import CheerioHtmlParser from "../service/CheerioHtmlParser";
 import UrlAppender from "../service/UrlAppender";
 import SimpleHoursSplitter from "../service/hour/SimpleHoursSplitter";
 import SimpleHourParser from "../service/hour/SimpleHourParser";
@@ -18,7 +18,7 @@ describe("LibraryHoursFetcher", function () {
     it("should fetch library hours", async function () {
         // given
         const mockHtmlFetcher = newMockHtmlFetcher("https://lib.hku.hk/hours/daily/opening_hours_2018-12-23.html", htmlResponse);
-        const htmlParser = new HtmlParser();
+        const htmlParser = new CheerioHtmlParser();
         const appender = new UrlAppender("https://lib.hku.hk/hours/daily/opening_hours_", ".html");
 
         const splitter = new SimpleHoursSplitter();

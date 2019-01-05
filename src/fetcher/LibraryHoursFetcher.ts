@@ -24,7 +24,7 @@ export default class LibraryHoursFetcher {
     async retrieveHours(date: Moment) {
         const url = this._appender.buildUrlWithDate(date);
         const html = await this._htmlFetcher.fetchHtml(url);
-        const stringsMap = this._parser.parseHtml(html);
+        const stringsMap = await this._parser.parseHtml(html);
         const validatedMap = this._validator.validate(stringsMap);
         return this._factory.createLibraryHours(validatedMap);
     }
