@@ -4,7 +4,7 @@ import HourParser from "./hour/HourParser";
 import HoursSplitter from "./hour/HoursSplitter";
 import MomentConverter from "./hour/MomentConverter";
 
-const CLOSED = "closed";
+const CLOSED = "Closed";
 
 export default class HoursConverter {
     private readonly _splitter: HoursSplitter;

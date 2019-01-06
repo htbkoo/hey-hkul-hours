@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "../tests/utils/fetchPolyfill";
 
 import HtmlFetcher from "./HtmlFetcher";
 import expectedText from "../tests/resources/external/expectedHtmlFetchResponse";
